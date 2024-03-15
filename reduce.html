@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let d = [2,3,4,5,6,7,3,3,4,5];
+        let p = d.reduce(function(pre,value){
+            if(pre.includes(value)== false){
+                pre.push(value)
+            }
+            return pre;
+        },[]);
+        console.log(p)
+
+        let c = d.reduce(function(pre,value){
+            return pre + value;
+        },0);
+        console.log(c);
+        //for duplicate number
+        let a = d.reduce(function(pre,value){
+            if(pre.includes(value)== false){
+                pre.push(value)
+            }
+            return pre;
+        },[]);
+        console.log(a)
+    </script>
+    
+</body>
+</html>

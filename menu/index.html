@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu</title>
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <!-- styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    
+    <section class="menu" >
+      <!-- title -->
+      <div class="title">
+        <h2>our menu</h2>
+        <div class="underline"></div>
+      </div>
+      <!-- filter buttons -->
+      
+      <button  class="filter-btn" onclick="manageSort('priceA')">Price Low To High</button>
+      <button  class="filter-btn" onclick="manageSort('priceD')">Price High To Low</button>
+  
+      <button  class="filter-btn" onclick="manageSort('nameA')">Name A To Z</button>
+      <button  class="filter-btn" onclick="manageSort('nameZ')">Name Z To A</button>
+     
+      
+      <div class="btn-container" id="btn">
+         <button type="button" class="filter-btn" data-id="all">all</button>
+        <button type="button" class="filter-btn" data-id="breakfast">
+          breakfast
+        </button>
+        <button type="button" class="filter-btn" data-id="lunch">lunch</button>
+        <button type="button" class="filter-btn" data-id="shakes">
+          shakes
+        </button> 
+      </div>
+      <!-- menu items -->
+      <div class="section-center" id="menu">
+        
+        <!-- single item -->
+        
+
+       
+        
+       
+      </div>
+    </section>
+    <!-- javascript -->
+     <script src="js/menu.js"></script>
+  </body>
+</html>
