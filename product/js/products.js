@@ -4,7 +4,7 @@ const products = [
       title: 'high-back bench',
       company: 'ikea',
       image:
-        'https://dl.airtable.com/.attachments/14ac9e946e1a02eb9ce7d632c83f742f/4fd98e64/product-1.jpeg',
+        'https://dl.airtable.com/.attachments/12f/4fd98e64/product-1.jpeg',
       price: 9.99,
     },
     {
@@ -113,36 +113,35 @@ const products = [
     },
   ];
 
-  const display = (data) =>{
-    let display = data.map((v)=>{
-        return (`  </article>
-        </div>
-        
-        <div class="products-container" id="products">
-          
-          <article class="product">
-            <img
-              src="${v.image}"
-              class="product-img img"
-              alt=""
-            />
-            <footer>
-              <h5 class="product-name">${v.title}</h5>
-              <span class="product-price">${v.price}</span>
-            </footer>
-          </article>`)
-    })
+const display = (data) => {
+  let display = data.map((v)=>{
+    return (`
+    <article class="product">
+    <img
+      src="${v.image}"
+      class="product-img img"
+      alt=""
+    />
+    <footer>
+      <h5 class="product-name">${v.title}</h5>
+      <span class="product-price">${v.price}</span>
+    </footer>
+  </article>`)
 
-    document.getElementById("products").innerHTML = display.join("");
+  })
 
-    let company = products.map((v)=>{
-      return v.company;
-    })
-    console.log(company);
+  document.getElementById("products").innerHTML = display.join("");
 
-    let button = company.map((p)=>{
-      return `<button class="company-btn">${p}</button>`
-    })
-    document.getElementById("companies").innerHTML = button.join("");
-  };
-  display(products);
+  let company = products.map((v)=>{
+        return v.company;
+      })
+      console.log(company);
+      let button = company.map((p)=>{
+            return `<button class="company-btn">${p}</button>`
+          })
+          document.getElementById("companies").innerHTML = button.join("");
+}
+ display(products);
+
+
+ 

@@ -20,14 +20,32 @@
             return pre + value;
         },0);
         console.log(c);
-        //for duplicate number
+        
         let a = d.reduce(function(pre,value){
             if(pre.includes(value)== false){
                 pre.push(value)
             }
             return pre;
         },[]);
-        console.log(a)
+        console.log(a);
+
+        //for duplicate number
+        let  dp = [2,3,5,6,7,8,4,3,3,1,2,3];
+
+       
+
+let p1= dp.reduce(function(pre,value){
+
+    if(dp.indexOf(value) != dp.lastIndexOf(value) && pre.includes(value) == false)
+    {
+        pre.push(value);
+    }
+
+    return pre;
+
+},[]);
+
+console.log(p1);
     </script>
     
 </body>

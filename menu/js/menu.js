@@ -191,10 +191,17 @@ const addToCart = (index) => {
     selectedItem.qty = 1;
     carts.push(selectedItem);
   }
+  else
+  {
+     exit.qty = exit.qty+1;
+  }
 
   console.log(carts);
+  
+  document.getElementById("count").innerHTML = carts.length;
 
 }
+
 
 
 

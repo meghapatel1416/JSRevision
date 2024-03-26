@@ -242,22 +242,43 @@ let products = [
 ]
 
 let cart = [];
-const display = products.map((v,index)=>{
-    return`<div class="col-4"> <div class="card" style="width:400px">
-    <img class="card-img-bottom" src="${v.image}" alt="Card image" style="width:100%">
-    <div class="card-body">
-      <h4 class="card-title">${v.title}</h4>
-      <p class="card-text">${v.description}</p>
-      <a href="#" class="btn btn-primary"  onclick="addItem(${index})">Add To Cart</a>
-    </div>
+let pageSize=5;
+
+const display = (start,end) =>{
+    let display = products.slice(start,end).map((v,index)=>{
+        return`<div class="col-4"> <div class="card" style="width:400px">
+        <img class="card-img-bottom" src="${v.image}" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">${v.title}</h4>
+          <p class="card-text">${v.description}</p>
+          <a href="#" class="btn btn-primary"  onclick="addItem(${index})">Add To Cart</a>
+        </div>
+        
+      </div>
+    </div> </div>`
     
-  </div>
-</div> </div>`
+    })
+    document.querySelector(".row").innerHTML = display.join(" ");
+}
+display(0,pageSize);
 
-})
+
+function displayButton()
+{
+  let numberofPage = products.length/pageSize;
+
+  for(let i=1;i<=numberofPage;i++)
+  {
+      let start = (i-1)*pageSize;
+      let end =  start+ pageSize;
+
+      document.getElementById("button").innerHTML +=`<button onclick="display(${start},${end})">${i}</button>` 
+  }
 
 
-document.querySelector(".row").innerHTML = display.join(" ");
+
+}
+displayButton();
 
 const addItem = (index)=>{
     let selectedItem = products[index];
@@ -282,3 +303,4 @@ const addItem = (index)=>{
     console.log(cart);
     document.getElementById("count").innerHTML = cart.length;
 };
+

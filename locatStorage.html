@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="hidden" id="index" value="-1"/>
+    <input type="text" id="name"/>
+    <input type="text" id="contactNumber"/>
+    <button onclick="saveInfo()">Save Info</button>
+    <table id="dis"></table>
+    <script>
+     const saveInfo = ()=>{
+        let indexToEdit = document.getElementById("index").value;
+        let a = JSON.parse(localStorage.getItem("employee")) || [];
+        let obj = {
+            "name" :document.getElementById("name").value,
+            "number" : document.getElementById("contactNumber").value
+        };
+
+        if(indexToEdit == "-1")
+                {
+                    a.push(obj);
+                }else{
+                    a[indexToEdit] = obj;
+                }
+
+                document.getElementById("index").value = "-1";
+
+        // a.push(obj);
+
+
+        // localStorage.setItem("employee",JSON.stringify(obj));
+        localStorage.setItem("employee",JSON.stringify(a));
+        display();
+     };
+
+     const display = () =>{
+        let a =JSON.parse(localStorage.getItem("employee")) || [];
+        let dis = a.map((v,index)=>{
+            return`<tr><td>${v.name}</td><td>${v.number}</td><td><button onClick="deleteInfo('${index}')">Delete</button></td><td><button onClick="editInfo('${index}')">Edit</button></td></tr>`
+        });
+
+        document.getElementById("dis").innerHTML = dis.join("");
+     };
+
+     const deleteInfo = (index) =>{
+        let a =JSON.parse(localStorage.getItem("employee")) || [];
+        a.splice(index,1);
+        localStorage.setItem("employee",JSON.stringify(a));
+        display();
+
+     };
+
+     const editInfo = (index)=>{
+        let a =JSON.parse(localStorage.getItem("employee")) || [];
+        document.getElementById("name").value = a[index].name;
+        document.getElementById("contactNumber").value = a[index].number;
+
+        document.getElementById("index").value = index;
+     }
+
+
+
+     
+
+     
+
+        // localStorage.setItem("key","value");
+        // localStorage.setItem("key1","value1");
+        // localStorage.removeItem("key");
+        // localStorage.clear();
+    </script>
+    
+</body>
+</html>
